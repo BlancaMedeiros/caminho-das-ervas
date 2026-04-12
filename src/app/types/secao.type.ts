@@ -1,0 +1,1 @@
+type SecaoSite = "paginaInicial" | "todos" | "banho" | "mao" | "fragrancia" | "cabelo" | "pele" | "infantil";

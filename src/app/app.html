@@ -1,4 +1,9 @@
-<app-cabecalho></app-cabecalho>
-<app-pagina-inicial></app-pagina-inicial>
+<app-cabecalho (onChangePaginaAtual)="onChangePaginaAtual($event)"></app-cabecalho>
+@if(paginaAtual=='paginaInicial'){
+    <app-pagina-inicial></app-pagina-inicial>
+}
+@else{
+    <app-produtos [filtroProdutos]="paginaAtual"></app-produtos>
+}
 <app-rodape></app-rodape>
 <router-outlet />
