@@ -12,7 +12,15 @@
       </div>
 
       <div>
-        <a class="user-menu" href="#">Login</a>
+        @if(!usuarioLogado){
+  <a class="user-menu" href="#" (click)="abrirLogin($event)">Login</a>
+}
+@else{
+  <div class="user-menu">
+  👤 {{ usuarioLogado }}
+  <button (click)="logout()">Sair</button>
+</div>
+}
       </div>
     </div>
 
