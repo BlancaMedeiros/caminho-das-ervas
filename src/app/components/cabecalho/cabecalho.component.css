@@ -58,6 +58,8 @@
     border: none;
     padding: 8px 20px;
     border-radius: 20px;
+    display: flex;
+    gap: 1rem;
 }
 
 .nav-bar {
@@ -86,4 +88,9 @@
 .nav-list li a.active {
   color: #d14900; 
   border-bottom: 2px solid #d14900;
+}
+
+
+.logout-icon {
+  cursor: pointer;
 }
