@@ -4,11 +4,14 @@
 </section>
 
 <section class="container">
-    <div class="product-grid">
-        @for (produto of produtosFiltrados; track produto) {
-            <app-produto [produto]="produto"></app-produto>
-        } @empty {
-        <h1>Nenhum produto encontrado.</h1>
-        }
-    </div>
+  <div class="product-grid">
+
+    @for (produto of produtosFiltrados; track produto.nome) {
+      <app-produto [produto]="produto"></app-produto>
+    } @empty {
+      <h1>Nenhum produto encontrado.</h1>
+    }
+
+  </div>
+  
 </section>

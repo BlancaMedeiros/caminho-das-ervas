@@ -1,9 +1,10 @@
 import { CategoriaType } from "../types/categoria.type";
 
-export interface produtoModel
-{
-    nome: string;
-    preco: number;
-    imagem: string;
-    categoria: CategoriaType
+export interface Produto {
+  id: number;
+  nome: string;
+  descricao: string;
+  preco: number;
+  imagem: string;
+  categoria?: string;
 }
