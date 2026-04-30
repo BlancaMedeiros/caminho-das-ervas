@@ -1,0 +1,31 @@
+.carrinho {
+    width: 90px;
+    height: 90px;
+    background-color: #5b7f6a;
+    border-radius: 150px;
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px;
+    z-index: 1000;
+    }
+
+.material-symbols-outlined {
+  font-size: 58px;
+  color: white; 
+}
+
+.carrinho-fixo {
+  position: fixed;
+  bottom: 32px;
+  right: 34px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px; 
+  cursor: pointer;
+}
+
+
+

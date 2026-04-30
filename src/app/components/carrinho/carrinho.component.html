@@ -1,0 +1,9 @@
+<div class="carrinho" (click)="toggleCarrinho()">
+    <div class="carrinho-fixo">
+        <span class="material-symbols-outlined">shopping_cart</span>
+    </div>
+</div>
+
+@if(carrinhoAberto){
+  <app-conteudo-carrinho (onClose)="toggleCarrinho()"></app-conteudo-carrinho>
+}

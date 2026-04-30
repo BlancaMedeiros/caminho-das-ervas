@@ -1,0 +1,25 @@
+<div class="carrinho-overlay" (click)="fecharCarrinho()">
+    <!-- O (click) aqui serve para fechar ao clicar fora da lateral -->
+    <div class="carrinho-lateral" (click)="$event.stopPropagation()">
+      <div class="carrinho-header">
+        <h3>Meu Carrinho</h3>
+        <button (click)="fecharCarrinho()">X</button>
+      </div>
+
+      <div class="carrinho-itens">
+        @for (item of itens; track item.nome) {
+          <div class="item-linha">
+            <span>{{ item.nome }}</span>
+            <span>{{ item.preco | currency:'BRL' }}</span>
+          </div>
+        } 
+        @empty {
+          <p>Seu carrinho está vazio 🍃</p>
+        }
+      </div>
+
+      <div class="carrinho-footer">
+        <button class="btn-finalizar">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
