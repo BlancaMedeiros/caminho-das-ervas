@@ -6,6 +6,7 @@ import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
 import { ProdutosComponent } from './components/produtos/produtos.component';
 import { SecaoSiteType } from './types/secao.type';
 import { LoginComponent } from './components/login/login.component'; 
+import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { LoginComponent } from './components/login/login.component';
     ProdutosComponent,
     RodapeComponent,
     CabecalhoComponent,
-    LoginComponent, 
+    LoginComponent, CarrinhoComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
