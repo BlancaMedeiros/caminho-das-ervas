@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ConteudoCarrinhoComponent } from '../conteudo-carrinho/conteudo-carrinho.component';
+import { CarrinhoService } from '../../services/carrinho.service';
 
 @Component({
   selector: 'app-carrinho',
@@ -11,10 +12,7 @@ import { ConteudoCarrinhoComponent } from '../conteudo-carrinho/conteudo-carrinh
 })
 export class CarrinhoComponent {
   carrinhoAberto = false;
-  itens = [
-    { nome: 'Sabonete Natural', preco: 15.90 },
-    { nome: 'Óleo Essencial', preco: 45.00 }
-  ];
+  constructor(public carrinhoService: CarrinhoService) {};
 
   toggleCarrinho() {
     this.carrinhoAberto = !this.carrinhoAberto;

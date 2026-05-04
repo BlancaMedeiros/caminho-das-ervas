@@ -29,7 +29,7 @@ logout(){
 }
 
 abrirLogin(event: Event){
-  event.preventDefault(); // evita recarregar a página
+  event.preventDefault(); 
   console.log("clicou no login");
   this.abrirLoginEvent.emit();}
 

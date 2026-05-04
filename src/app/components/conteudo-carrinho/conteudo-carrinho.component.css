@@ -1,5 +1,4 @@
 
-/* Fundo escuro atrás da lateral */
 .carrinho-overlay {
   position: fixed;
   top: 0;
@@ -9,10 +8,9 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2000;
   display: flex;
-  justify-content: flex-end; /* Alinha a lateral à direita */
+  justify-content: flex-end;
 }
 
-/* A barra lateral branca */
 .carrinho-lateral {
   width: 350px;
   height: 100%;
@@ -28,7 +26,12 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #eee;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
+}
+
+.carrinho-header h3 {
+  margin: 0;
+  color: #2d3e33;
 }
 
 .carrinho-itens {
@@ -40,23 +43,112 @@
 .item-linha {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
-  padding: 10px;
+  align-items: center; 
+  margin-bottom: 12px;
+  padding: 12px;
   background: #f9f9f9;
   border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.item-linha:hover {
+  background: #f0f0f0; 
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px; 
+}
+
+.item-info span:first-child {
+  font-weight: 500;
+  color: #333;
+}
+
+.quantidade-controles {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.quantidade-controles button {
+  background-color: #eee;
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #2d3e33;
+  transition: all 0.2s;
+}
+
+.quantidade-controles button:hover {
+  background-color: #5b7f6a;
+  color: white;
+}
+
+.qtd-numero {
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.preco-unitario {
+  color: #888;
+  font-size: 0.85em;
+  margin-left: 5px;
+}
+
+.btn-remover {
+  background: none;
+  border: none;
+  color: #a0a0a0; 
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.btn-remover:hover {
+  color: #cc0000; 
+  transform: scale(1.2); 
+}
+
+.carrinho-footer {
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.carrinho-footer p {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: right;
+  color: #2d3e33;
 }
 
 .btn-finalizar {
   width: 100%;
   padding: 15px;
-  background-color: #2d3e33; /* Verde Natura */
+  background-color: #2d3e33;
   color: white;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.carrinho-footer {
-  margin-bottom: 40px;
+.btn-finalizar:hover {
+  background-color: #1e2922;
 }
