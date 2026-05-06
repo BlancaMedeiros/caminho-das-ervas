@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  @Output() trocarParaCadastro = new EventEmitter<void>();
   @Output() loginSucesso = new EventEmitter<void>();
 
   email = '';
@@ -28,7 +28,10 @@ export class LoginComponent {
     this.errorMessage = 'Credenciais inválidas';
   }
 }
-
+irParaCadastro(event: Event) {
+  event.preventDefault();
+  this.trocarParaCadastro.emit();
+}
   fechar(){
     this.loginSucesso.emit();
   }

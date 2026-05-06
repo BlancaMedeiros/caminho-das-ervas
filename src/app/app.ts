@@ -7,6 +7,7 @@ import { ProdutosComponent } from './components/produtos/produtos.component';
 import { SecaoSiteType } from './types/secao.type';
 import { LoginComponent } from './components/login/login.component'; 
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,9 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
     ProdutosComponent,
     RodapeComponent,
     CabecalhoComponent,
-    LoginComponent, CarrinhoComponent
+    LoginComponent,
+    CarrinhoComponent,
+    CadastroComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
@@ -28,11 +31,20 @@ export class App {
   paginaAtual: SecaoSiteType = "paginaInicial";
 
   mostrarLogin = false;
+  mostrarCadastro = false;
 
   usuarioLogado: string | null = null; 
 
   ngOnInit(){
     this.usuarioLogado = localStorage.getItem('usuarioLogado');
+  }
+  abrirCadastro() {
+    this.mostrarLogin = false;
+    this.mostrarCadastro = true;
+  }
+  abrirLogin() {
+    this.mostrarCadastro = false;
+    this.mostrarLogin = true;
   }
 
   onChangePaginaAtual(paginaAtual: SecaoSiteType){
@@ -41,7 +53,9 @@ export class App {
 
   onLoginSucesso(){
     this.mostrarLogin = false;
+    this.mostrarCadastro = false;
     this.usuarioLogado = localStorage.getItem('usuarioLogado');
+    this.paginaAtual = 'paginaInicial'; // Garante o redirecionamento
   }
 
   logout(){

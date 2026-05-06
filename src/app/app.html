@@ -1,11 +1,16 @@
-<app-cabecalho 
+<app-cabecalho
   [usuarioLogado]="usuarioLogado"
   (onChangePaginaAtual)="onChangePaginaAtual($event)"
   (abrirLoginEvent)="mostrarLogin = true"
   (logoutEvent)="logout()">
 </app-cabecalho>
 
-
+@if(mostrarCadastro) {
+  <app-cadastro
+    (cadastroSucesso)="onLoginSucesso()"
+    (voltarLogin)="abrirLogin()">
+  </app-cadastro>
+}
 @if(mostrarLogin){
   <app-login (loginSucesso)="onLoginSucesso()"></app-login>
 }
@@ -17,5 +22,7 @@
     <app-produtos [filtroProdutos]="paginaAtual"></app-produtos>
 }
 <app-carrinho></app-carrinho>
+
+
 <app-rodape></app-rodape>
 <router-outlet />
