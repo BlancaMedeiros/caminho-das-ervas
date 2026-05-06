@@ -11,14 +11,21 @@
   "private": true,
   "packageManager": "npm@11.6.2",
   "dependencies": {
+    "3": "^2.1.0",
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
+    "@capacitor-community/sqlite": "^8.1.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1",
+    "tslib": "^2.3.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@angular/build": "^21.2.0",

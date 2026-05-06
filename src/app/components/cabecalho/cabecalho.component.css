@@ -47,7 +47,7 @@
   right: 15px; 
   top: 50%; 
   transform: translateY(-50%); 
-  color: #888; 
+  color: #134e16; 
   pointer-events: none; 
   font-size: 16px;
 }
@@ -76,7 +76,7 @@
 
 .nav-list li a, .dropbtn {
   text-decoration: none;
-  color: #333;
+  color: #197a31;
   font-size: 14px;
   padding: 10px 0;
   display: block;
@@ -86,8 +86,8 @@
 }
 
 .nav-list li a.active {
-  color: #d14900; 
-  border-bottom: 2px solid #d14900;
+  color: #000a05; 
+  border-bottom: 2px solid #042708;
 }
 
 
