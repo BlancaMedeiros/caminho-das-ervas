@@ -4,7 +4,9 @@ export interface produtoModel
 {
     id: number;
     nome: string;
+    descricao: string;
+    quantidade: number;
     preco: number;
-    imagem: string;
     categoria: CategoriaType;
+    imagem: string;
 }

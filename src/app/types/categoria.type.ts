@@ -1,1 +1,1 @@
-export type CategoriaType = "banho" | "mao" | "fragrancia" | "cabelo" | "pele" | "infantil"
+export type CategoriaType = "banho" | "massagem" | "fragrancia" | "cabelo" | "pele" | "infantil"

@@ -1,3 +1,4 @@
 import { CategoriaType } from "./categoria.type";
 
-export type SecaoSiteType = "paginaInicial" | "todos" | CategoriaType;
+// Exemplo de como deve ficar no arquivo secao.type.ts
+export type SecaoSiteType = 'paginaInicial' | 'todos' | 'banho' | 'massagem' | 'fragrancia' | 'cabelo' | 'pele' | 'infantil';

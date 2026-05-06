@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { produtoModel } from '../models/produto.model';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ProdutoService {
-  private listaProdutos: produtoModel[] = [
-    {id: 1, nome: 'Sabonete Alecrim e Arruda e escalda pés 50g- Limpeza Energética', preco: 21.90, imagem: 'assets/sabonete.jpg', categoria: "banho"},
-    {id: 2, nome: 'Sabonete Artesanal de Dolomita - Efeito Porcelana', preco: 14.90, imagem: 'assets/domitila.jpg', categoria: "banho" }
-  ];
+  private API = 'http://localhost:3000/api/produtos';
 
-  getProdutos(): Observable<produtoModel[]> {
-    return of(this.listaProdutos);
+  constructor(private http: HttpClient) {}
+
+  listar() {
+    return this.http.get<any[]>(this.API);
   }
 }
