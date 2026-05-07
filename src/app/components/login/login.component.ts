@@ -20,6 +20,7 @@ export class LoginComponent {
   onSubmit() {
   if (this.email === 'admin@email.com' && this.password === '123456') {
     localStorage.setItem('usuarioLogado', this.email); // 💾 SALVA
+    this.router.navigate(["/"])
   } else {
     this.errorMessage = 'Credenciais inválidas';
   }
