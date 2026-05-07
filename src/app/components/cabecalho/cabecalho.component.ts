@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { SecaoSiteType } from '../../types/secao.type';
+import { Router } from '@angular/router';
+import { FiltroProdutoService } from '../../services/filtro-produto-service';
 
 @Component({
   selector: 'app-cabecalho',
@@ -10,28 +12,26 @@ import { SecaoSiteType } from '../../types/secao.type';
   styleUrl: './cabecalho.component.css',
 })
 export class CabecalhoComponent {
- @Input() 
- usuarioLogado: string | null = null;
+  @Input() 
+  usuarioLogado: string | null = null;
 
   isDropdownOpen = false;
 
-  @Output()
-  onChangePaginaAtual = new EventEmitter<SecaoSiteType>();
 
   @Output()
-abrirLoginEvent = new EventEmitter<void>();
+  logoutEvent = new EventEmitter<void>();
 
-@Output()
-logoutEvent = new EventEmitter<void>();
+  constructor(private router: Router, private filtrosService: FiltroProdutoService) {}
 
-logout(){
-  this.logoutEvent.emit();
-}
+  logout(){
+    this.logoutEvent.emit();
+  }
 
-abrirLogin(event: Event){
-  event.preventDefault(); 
-  console.log("clicou no login");
-  this.abrirLoginEvent.emit();}
+  abrirLogin(event: Event){
+    event.preventDefault(); 
+    console.log("clicou no login");
+    this.router.navigate(['/login'])
+  }
 
   paginaAtual: SecaoSiteType = "paginaInicial";
   toggleDropdown(open: boolean) {
@@ -39,7 +39,14 @@ abrirLogin(event: Event){
   }
 
   setPaginaAtual(secao: SecaoSiteType){
+    console.log('setPagina Atual: ',secao)
     this.paginaAtual = secao;
-    this.onChangePaginaAtual.emit(this.paginaAtual);
+    if(secao=="paginaInicial")
+      this.router.navigate(["/"]); 
+    else{
+      this.filtrosService.setFiltro(secao);
+      this.router.navigate(["/produtos"]); 
+    }
+      
   }
 }

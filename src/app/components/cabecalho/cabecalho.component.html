@@ -27,14 +27,14 @@
 
     <nav class="nav-bar">
       <ul class="nav-list">
-        <li><a href="#" [ngClass]="{ 'active': paginaAtual=='paginaInicial' }" (click)="setPaginaAtual('paginaInicial')">Página principal</a></li>
-        <li><a href="#" [ngClass]="{ 'active': paginaAtual=='todos' }" (click)="setPaginaAtual('todos')">Todos os produtos</a></li>
-        <li><a href="#" [ngClass]="{ 'active': paginaAtual=='banho' }" (click)="setPaginaAtual('banho')">Banho e Cuidados</a></li>
-        <li><a href="#" [ngClass]="{ 'active': paginaAtual=='mao' }" (click)="setPaginaAtual('mao')">Cuidados com as Mão</a></li>
-        <li><a href="#" [ngClass]="{ 'active': paginaAtual=='fragrancia' }" (click)="setPaginaAtual('fragrancia')">Fragrância da Casa</a></li>
-        <li><a href="#" [ngClass]="{ 'active': paginaAtual=='cabelo' }" (click)="setPaginaAtual('cabelo')">Acessórios de Cabelo</a></li>
-        <li><a href="#" [ngClass]="{ 'active': paginaAtual=='pele' }" (click)="setPaginaAtual('pele')">Cuidados com a Pele</a></li>
-        <li><a href="#" [ngClass]="{ 'active': paginaAtual=='infantil' }" (click)="setPaginaAtual('infantil')">Acessórios Infantis</a></li>
+        <li><a [ngClass]="{ 'active': paginaAtual=='paginaInicial' }" (click)="setPaginaAtual('paginaInicial')">Página principal</a></li>
+        <li><a [ngClass]="{ 'active': paginaAtual=='todos' }" (click)="setPaginaAtual('todos')">Todos os produtos</a></li>
+        <li><a [ngClass]="{ 'active': paginaAtual=='banho' }" (click)="setPaginaAtual('banho')">Banho e Cuidados</a></li>
+        <li><a [ngClass]="{ 'active': paginaAtual=='mao' }" (click)="setPaginaAtual('mao')">Cuidados com as Mão</a></li>
+        <li><a [ngClass]="{ 'active': paginaAtual=='fragrancia' }" (click)="setPaginaAtual('fragrancia')">Fragrância da Casa</a></li>
+        <li><a [ngClass]="{ 'active': paginaAtual=='cabelo' }" (click)="setPaginaAtual('cabelo')">Acessórios de Cabelo</a></li>
+        <li><a [ngClass]="{ 'active': paginaAtual=='pele' }" (click)="setPaginaAtual('pele')">Cuidados com a Pele</a></li>
+        <li><a [ngClass]="{ 'active': paginaAtual=='infantil' }" (click)="setPaginaAtual('infantil')">Acessórios Infantis</a></li>
       </ul>
     </nav>
   </div>

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,25 +12,20 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
 
-  @Output() loginSucesso = new EventEmitter<void>();
-
   email = '';
   password = '';
   errorMessage = '';
+  constructor(private router: Router){}
 
   onSubmit() {
   if (this.email === 'admin@email.com' && this.password === '123456') {
-
     localStorage.setItem('usuarioLogado', this.email); // 💾 SALVA
-
-    this.loginSucesso.emit();
-
   } else {
     this.errorMessage = 'Credenciais inválidas';
   }
 }
 
   fechar(){
-    this.loginSucesso.emit();
+    this.router.navigate(["/"])
   }
 }
