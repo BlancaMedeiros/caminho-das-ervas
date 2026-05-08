@@ -19,17 +19,6 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 })
 export class App {
   protected readonly title = signal('front-caminho-das-ervas');
-
-
-  usuarioLogado: string | null = null; 
   constructor(private router: Router){}
 
-  ngOnInit(){
-    this.usuarioLogado = localStorage.getItem('usuarioLogado');
-  }
-
-  logout(){
-    localStorage.removeItem('usuarioLogado'); // apaga login
-    this.usuarioLogado = null; // atualiza tela
-  }
 }

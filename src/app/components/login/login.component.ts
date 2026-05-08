@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../../services/login-service';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,11 @@ export class LoginComponent {
   email = '';
   password = '';
   errorMessage = '';
-  constructor(private router: Router){}
+  constructor(private loginService: LoginService, private router: Router){}
 
   onSubmit() {
-    if (this.email === 'admin@email.com' && this.password === '123456') {
-      localStorage.setItem('usuarioLogado', this.email); // 💾 SALVA
+    if (this.email === 'admin@email.com' && this.password === 'batata') {
+      this.loginService.setUsuarioLogado(this.email);
       this.router.navigate(["/"])
     } else {
       this.errorMessage = 'Credenciais inválidas';

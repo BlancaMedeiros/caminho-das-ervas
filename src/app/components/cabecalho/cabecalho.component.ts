@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { SecaoSiteType } from '../../types/secao.type';
 import { Router } from '@angular/router';
 import { FiltroProdutoService } from '../../services/filtro-produto-service';
+import { LoginService } from '../../services/login-service';
 
 @Component({
   selector: 'app-cabecalho',
@@ -11,21 +12,22 @@ import { FiltroProdutoService } from '../../services/filtro-produto-service';
   templateUrl: './cabecalho.component.html',
   styleUrl: './cabecalho.component.css',
 })
-export class CabecalhoComponent {
-  @Input() 
+export class CabecalhoComponent implements OnInit {
   usuarioLogado: string | null = null;
 
   isDropdownOpen = false;
 
-
-  @Output()
-  logoutEvent = new EventEmitter<void>();
-
-  constructor(private router: Router, private filtrosService: FiltroProdutoService) {}
-
-  logout(){
-    this.logoutEvent.emit();
+  constructor(private router: Router, private filtrosService: FiltroProdutoService, private loginService: LoginService) {}
+  
+  ngOnInit(): void {
+    this.loginService.usuarioLogado$.subscribe((email)=>{
+      this.usuarioLogado = email;
+    })
   }
+  logout(){
+    this.loginService.logout();    
+  }
+
 
   abrirLogin(event: Event){
     event.preventDefault(); 
