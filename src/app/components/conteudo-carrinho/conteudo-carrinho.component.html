@@ -31,7 +31,7 @@
 
     <div class="carrinho-footer">
       <p>Total: {{ carrinhoService.getPrecoTotal() | currency:'BRL' }}</p>
-      <button class="btn-finalizar">Finalizar Compra</button>
+      <button class="btn-finalizar" (click)="irParaPagamento()">Finalizar Compra</button>
     </div>
   </div>
 </div>

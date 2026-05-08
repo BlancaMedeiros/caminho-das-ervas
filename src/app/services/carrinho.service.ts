@@ -28,12 +28,10 @@ export class CarrinhoService {
     return this.itens;
   }
 
-  // NOVA: Soma todas as quantidades para a bolinha (badge)
   getQuantidadeTotal(): number {
     return this.itens.reduce((total, item) => total + item.quantidade, 0);
   }
 
-  // NOVA: Aumenta a quantidade
   incrementarQuantidade(id: number) {
     const item = this.itens.find(i => i.produto.id === id);
     if (item) {
@@ -41,7 +39,6 @@ export class CarrinhoService {
     }
   }
 
-  // NOVA: Diminui a quantidade ou remove se chegar a 0
   decrementarQuantidade(id: number) {
     const item = this.itens.find(i => i.produto.id === id);
     if (item) {
