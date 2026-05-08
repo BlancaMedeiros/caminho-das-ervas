@@ -11,8 +11,6 @@ import { CommonModule } from '@angular/common';// Importe o Router para redireci
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent {
-
-  @Output() voltarLogin = new EventEmitter<void>();
   @Output() cadastroSucesso = new EventEmitter<void>()
 
 
@@ -33,7 +31,7 @@ export class CadastroComponent {
 
   irParaLogin(event: Event) {
     event.preventDefault();
-    this.voltarLogin.emit();
+    this.router.navigate(["/login"]);
   }
 
 
