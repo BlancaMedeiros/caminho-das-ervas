@@ -1,7 +1,6 @@
 <div class="overlay">
 
   <div class="modal">
-    
     <button class="close-btn" (click)="fechar()">✕</button>
 
     <h2>Login</h2>
@@ -15,9 +14,9 @@
         required
       >
 
-      <input 
-        type="password" 
-        [(ngModel)]="password" 
+      <input
+        type="password"
+        [(ngModel)]="password"
         name="password"
         placeholder="Senha"
         required
@@ -25,7 +24,9 @@
 
       <button type="submit">Entrar</button>
     </form>
-
+    <p style="text-align: center; margin-top: 10px;">
+      Não tem conta? <a href="#" (click)="irParaCadastro($event)">Cadastre-se</a>
+    </p>
     <p *ngIf="errorMessage" style="color: red; text-align: center;">
       {{ errorMessage }}
     </p>

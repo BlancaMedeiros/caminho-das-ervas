@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
 import { SecaoSiteType } from '../../types/secao.type';
+import { Router } from '@angular/router';
+import { FiltroProdutoService } from '../../services/filtro-produto-service';
+import { LoginService } from '../../services/login-service';
 
 @Component({
   selector: 'app-cabecalho',
@@ -9,29 +12,28 @@ import { SecaoSiteType } from '../../types/secao.type';
   templateUrl: './cabecalho.component.html',
   styleUrl: './cabecalho.component.css',
 })
-export class CabecalhoComponent {
- @Input() 
- usuarioLogado: string | null = null;
+export class CabecalhoComponent implements OnInit {
+  usuarioLogado: string | null = null;
 
   isDropdownOpen = false;
 
-  @Output()
-  onChangePaginaAtual = new EventEmitter<SecaoSiteType>();
+  constructor(private router: Router, private filtrosService: FiltroProdutoService, private loginService: LoginService) {}
+  
+  ngOnInit(): void {
+    this.loginService.usuarioLogado$.subscribe((email)=>{
+      this.usuarioLogado = email;
+    })
+  }
+  logout(){
+    this.loginService.logout();    
+  }
 
-  @Output()
-abrirLoginEvent = new EventEmitter<void>();
 
-@Output()
-logoutEvent = new EventEmitter<void>();
-
-logout(){
-  this.logoutEvent.emit();
-}
-
-abrirLogin(event: Event){
-  event.preventDefault(); 
-  console.log("clicou no login");
-  this.abrirLoginEvent.emit();}
+  abrirLogin(event: Event){
+    event.preventDefault(); 
+    console.log("clicou no login");
+    this.router.navigate(['/login'])
+  }
 
   paginaAtual: SecaoSiteType = "paginaInicial";
   toggleDropdown(open: boolean) {
@@ -39,7 +41,14 @@ abrirLogin(event: Event){
   }
 
   setPaginaAtual(secao: SecaoSiteType){
+    console.log('setPagina Atual: ',secao)
     this.paginaAtual = secao;
-    this.onChangePaginaAtual.emit(this.paginaAtual);
+    if(secao=="paginaInicial")
+      this.router.navigate(["/"]); 
+    else{
+      this.filtrosService.setFiltro(secao);
+      this.router.navigate(["/produtos"]); 
+    }
+      
   }
 }

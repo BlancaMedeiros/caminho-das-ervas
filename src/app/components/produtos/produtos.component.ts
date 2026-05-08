@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { produtoModel } from '../../models/produto.model';
 import { ProdutoService } from '../../services/produto.service';
 import { CategoriaType } from '../../types/categoria.type';
+import { FiltroProdutoService } from '../../services/filtro-produto-service';
 
 @Component({
   selector: 'app-produtos',
@@ -12,21 +13,22 @@ import { CategoriaType } from '../../types/categoria.type';
   templateUrl: './produtos.component.html',
   styleUrl: './produtos.component.css',
 })
-export class ProdutosComponent implements OnInit, OnChanges {
-  @Input() filtroProdutos!: CategoriaType | null | "todos";
+export class ProdutosComponent implements OnInit {
+  filtroProdutos!: CategoriaType | null | "todos";
   produtos: produtoModel[] = []
   produtosFiltrados: produtoModel[] = []
 
-  constructor(private produtoService: ProdutoService) {}
-  ngOnChanges(changes: SimpleChanges): void {
-    this.aplicarfiltro(this.filtroProdutos);
-  }
+  constructor(private produtoService: ProdutoService, private filtroService: FiltroProdutoService) {}
 
   ngOnInit(): void {
     this.produtoService.getProdutos().subscribe((produtos)=>{
         this.produtos = produtos 
         this.aplicarfiltro(this.filtroProdutos)
     });
+    this.filtroService.FiltroAtual$.subscribe(filtro=>{
+      this.filtroProdutos = filtro;
+      this.aplicarfiltro(filtro);
+    })
   }
   aplicarfiltro(filtro: CategoriaType | null | "todos"){
     if(filtro == null || filtro == "todos") {

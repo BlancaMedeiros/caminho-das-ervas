@@ -11,6 +11,7 @@ export class ProdutoService {
     {id: 2, nome: 'Sabonete Artesanal de Dolomita - Efeito Porcelana', preco: 14.90, imagem: 'assets/domitila.jpg', categoria: "banho" }
   ];
 
+  // Método para retornar os produtos
   getProdutos(): Observable<produtoModel[]> {
     return of(this.listaProdutos);
   }
