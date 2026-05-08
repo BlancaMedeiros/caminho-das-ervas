@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { RodapeComponent } from './components/rodape/rodape.component';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
@@ -19,6 +19,4 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 })
 export class App {
   protected readonly title = signal('front-caminho-das-ervas');
-  constructor(private router: Router){}
-
 }
