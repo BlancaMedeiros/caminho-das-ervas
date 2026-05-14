@@ -7,4 +7,12 @@ CREATE TABLE products (
 
     
 
-)
+);
+ALTER TABLE products ADD COLUMN image_path TEXT;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    is_admin INTEGER DEFAULT 0 -- 0 para usuário comum, 1 para admin
+);
