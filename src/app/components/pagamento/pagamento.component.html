@@ -53,12 +53,40 @@
       </div>
     </div>
   } @else {
-    <!-- MENSAGEM DE SUCESSO -->
-    <div class="sucesso-container">
-      <div class="check-icon">✓</div>
-      <h2>Pedido realizado com sucesso!</h2>
-      <p>Obrigada por comprar na Caminho das Ervas. Em breve você receberá os detalhes no seu e-mail.</p>
-      <button type="button" class="btn-confirmar" routerLink="/produtos">Voltar para a Loja</button>
+  <div class="sucesso-container">
+    <div class="check-icon">✓</div>
+    <h2>Pedido confirmado com sucesso!</h2>
+    <p class="agradecimento">Agradecemos pela preferência <strong>Caminho das Ervas & Natureza.com</strong>.</p>
+
+    <div class="detalhes-pedido">
+      <h3>Itens do seu pedido:</h3>
+      @for (item of itensPedido; track item.produto.id) {
+        <div class="resumo-item-sucesso">
+          <span class="item-nome">{{ item.quantidade }}x {{ item.produto.nome }}</span>
+          <span class="item-preco">{{ (item.produto.preco * item.quantidade) | currency:'BRL' }}</span>
+        </div>
+      }
+      
+      <hr class="linha-sucesso">
+      
+      <div class="total-sucesso">
+        <span>Valor total a pagar:</span>
+        <strong>{{ totalPedido | currency:'BRL' }}</strong>
+      </div>
+
+      <p class="endereco-sucesso">
+        <strong>Endereço de entrega:</strong> {{ enderecoEntrega }}
+      </p>
     </div>
-  }
+
+    <div class="botoes-sucesso">
+      <button class="btn-whatsapp" (click)="concluirNoWhatsApp()">
+        Concluir Pagamento no WhatsApp
+      </button>
+      <button class="btn-voltar-texto" routerLink="/produtos">
+        Voltar para os Produtos
+      </button>
+    </div>
+  </div>
+}
 </div>

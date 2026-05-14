@@ -14,6 +14,11 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 
   export class PagamentoComponent {
   pagamentoRealizado: boolean = false;
+  
+  // Variáveis para armazenar o resumo pós-venda
+  itensPedido: any[] = [];
+  totalPedido: number = 0;
+  enderecoEntrega: string = '';
 
   formularioPagamento = new FormGroup({
     nome: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -25,9 +30,20 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 
   confirmarPagamento() {
     if (this.formularioPagamento.valid) {
+      // 1. Salva os dados antes de limpar
+      this.itensPedido = this.carrinhoService.getItens();
+      this.totalPedido = this.carrinhoService.getPrecoTotal();
+      this.enderecoEntrega = this.formularioPagamento.value.endereco || '';
+
+      // 2. Muda a tela e limpa o carrinho
       this.pagamentoRealizado = true;
       this.carrinhoService.limparCarrinho();
-      console.log('Dados do comprador:', this.formularioPagamento.value);
     }
+  }
+
+  concluirNoWhatsApp() {
+    const mensagem = `Olá! Gostaria de confirmar meu pedido.\nTotal: R$ ${this.totalPedido.toFixed(2)}\nEndereço: ${this.enderecoEntrega}`;
+    const url = `https://wa.me/5511959447449?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
   }
 }

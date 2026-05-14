@@ -1,11 +1,15 @@
 .pagamento-container {
   max-width: 1000px;
-  margin: 40px auto;
+  margin: 140px auto 40px auto; 
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h2 { color: #2d3e33; margin-bottom: 30px; }
+h2 { 
+  color: #2d3e33; 
+  margin-bottom: 30px; 
+}
+
 
 .layout-pagamento {
   display: grid;
@@ -37,6 +41,7 @@ h2 { color: #2d3e33; margin-bottom: 30px; }
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 .resumo-item {
@@ -68,20 +73,33 @@ h2 { color: #2d3e33; margin-bottom: 30px; }
   transition: 0.3s;
 }
 
-.btn-confirmar:hover { background-color: #2d3e33; }
-
-@media (max-width: 768px) {
-  .layout-pagamento { grid-template-columns: 1fr; }
+.btn-confirmar:hover:not(:disabled) { 
+  background-color: #2d3e33; 
 }
+
+.btn-confirmar:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.aviso-erro {
+  color: #cc0000;
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
+}
+
 
 .sucesso-container {
   text-align: center;
-  padding: 60px 20px;
+  padding: 40px 20px;
   background: #fdfdfd;
   border-radius: 12px;
   border: 1px solid #eee;
-  max-width: 600px;
+  max-width: 650px;
   margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
 .check-icon {
@@ -95,29 +113,97 @@ h2 { color: #2d3e33; margin-bottom: 30px; }
   margin: 0 auto 20px;
 }
 
-.sucesso-container h2 {
-  color: #2d3e33;
-  margin-bottom: 10px;
-}
-
-.sucesso-container p {
+.agradecimento {
+  font-size: 14px;
   color: #666;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
-.sucesso-container .btn-confirmar {
-  max-width: 300px;
+.detalhes-pedido {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto 30px auto;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
 }
 
-.btn-confirmar:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.aviso-erro {
-  color: #cc0000;
-  font-size: 12px;
-  margin-top: 10px;
+.detalhes-pedido h3 {
   text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #2d3e33;
+}
+
+.resumo-item-sucesso {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.linha-sucesso {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 15px 0;
+}
+
+.total-sucesso {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  color: #2d3e33;
+  font-weight: bold;
+}
+
+.endereco-sucesso {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+.botoes-sucesso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-whatsapp {
+  background-color: #5b7f6a;
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.btn-whatsapp:hover {
+  background-color: #435f4e;
+}
+
+.btn-voltar-texto {
+  background: #f0f0f0;
+  color: #555;
+  border: 1px solid #ddd;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .layout-pagamento { 
+    grid-template-columns: 1fr; 
+  }
 }
