@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SecaoSiteType } from '../../types/secao.type';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+
 import { FiltroProdutoService } from '../../services/filtro-produto-service';
 import { LoginService } from '../../services/login-service';
+import { AdminModalService } from '../../services/admin-modal.service'
 
 @Component({
   selector: 'app-cabecalho',
@@ -17,38 +19,50 @@ export class CabecalhoComponent implements OnInit {
 
   isDropdownOpen = false;
 
-  constructor(private router: Router, private filtrosService: FiltroProdutoService, private loginService: LoginService) {}
-  
+  constructor(
+    public adminService: AdminModalService,
+    private router: Router,
+    private filtrosService: FiltroProdutoService,
+    private loginService: LoginService
+  ) {}
+
   ngOnInit(): void {
-    this.loginService.usuarioLogado$.subscribe((email)=>{
+    this.loginService.usuarioLogado$.subscribe((email) => {
       this.usuarioLogado = email;
-    })
-  }
-  logout(){
-    this.loginService.logout();    
+    });
   }
 
+  logout(): void {
+    this.loginService.logout();
+    this.router.navigate(['/']); // Volta para a home após sair
+  }
 
-  abrirLogin(event: Event){
-    event.preventDefault(); 
-    console.log("clicou no login");
-    this.router.navigate(['/login'])
+  abrirLogin(event: Event): void {
+    event.preventDefault();
+    this.router.navigate(['/login']);
   }
 
   paginaAtual: SecaoSiteType = "paginaInicial";
-  toggleDropdown(open: boolean) {
+  toggleDropdown(open: boolean): void {
     this.isDropdownOpen = open;
   }
 
-  setPaginaAtual(secao: SecaoSiteType){
-    console.log('setPagina Atual: ',secao)
+  setPaginaAtual(secao: SecaoSiteType): void {
     this.paginaAtual = secao;
-    if(secao=="paginaInicial")
-      this.router.navigate(["/"]); 
-    else{
+    if (secao === "paginaInicial") {
+      this.router.navigate(["/"]);
+    } else {
       this.filtrosService.setFiltro(secao);
-      this.router.navigate(["/produtos"]); 
+      this.router.navigate(["/produtos"]);
     }
-      
+  }
+  pesquisar(event: any): void {
+    const valor = event.target.value;
+    this.filtrosService.setTermoPesquisa(valor);
+
+    // Se o usuário pesquisar fora da página de produtos, redireciona para lá
+    if (this.router.url !== '/produtos') {
+      this.router.navigate(['/produtos']);
+    }
   }
 }

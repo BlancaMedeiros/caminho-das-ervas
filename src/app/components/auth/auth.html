@@ -1,0 +1,15 @@
+<div class="auth-container">
+    <h2>Acesso Administrativo</h2>
+    <div class="grid-form">
+    <!-- Mantemos a classe full-width para o estilo premium -->
+    <input [(ngModel)]="user.username" placeholder="Usuário" class="full-width">
+    <input [(ngModel)]="user.password" type="password" placeholder="Senha" class="full-width">
+
+    <button (click)="handleAuth('login')" class="btn-main full-width">Entrar</button>
+
+    <p style="text-align: center; width: 100%; margin: 15px 0; color: #666; font-family: 'Montserrat', sans-serif;">OU</p>
+
+    <button style="background: transparent; border: 1px solid var(--primary-green); color: var(--primary-green);"
+            class="full-width" (click)="handleAuth('register')">Criar Nova Conta</button>
+    </div>
+</div>

@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; // Importa o HttpClient
 import { produtoModel } from '../models/produto.model';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProdutoService {
-  private listaProdutos: produtoModel[] = [
-    {id: 1, nome: 'Sabonete Alecrim e Arruda e escalda pés 50g- Limpeza Energética', preco: 21.90, imagem: 'assets/sabonete.jpg', categoria: "banho"},
-    {id: 2, nome: 'Sabonete Artesanal de Dolomita - Efeito Porcelana', preco: 14.90, imagem: 'assets/domitila.jpg', categoria: "banho" }
-  ];
+  // URL base do seu servidor Flask (conforme definido no app.py)
+  private apiUrl = 'http://localhost:5000/products';
 
-  // Método para retornar os produtos
+  constructor(private http: HttpClient) { }
+
+  // Retorna um Observable que o componente vai "escutar"
   getProdutos(): Observable<produtoModel[]> {
-    return of(this.listaProdutos);
+    return this.http.get<produtoModel[]>(this.apiUrl);
   }
 }
