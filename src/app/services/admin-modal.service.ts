@@ -8,6 +8,7 @@ export class AdminModalService {
   exibirAdmin = signal(false);
 
   abrir() {
+    console.log('Abrir...')
     this.exibirAdmin.set(true);
     document.body.style.overflow = 'hidden'; // Trava o scroll ao abrir
   }

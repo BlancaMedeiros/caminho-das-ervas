@@ -4,15 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product';
 import { Product } from '../../models/product.model';
 import { AdminModalService } from '../../services/admin-modal.service';
-
 import { LoginService } from '../../services/login-service';
+import { ProductFormComponent } from '../product-form/product-form';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
   imports: [CommonModule, FormsModule, ProductFormComponent],
-  templateUrl: './product-list.html',
-  styleUrl: './product-list.css'
+  templateUrl: './product-list.html'
 })
 export class ProductListComponent implements OnInit {
   // Controle de estado da interface
