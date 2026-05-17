@@ -33,28 +33,28 @@
 .search-box {
   position: relative;
   width: 100%;
-  max-width: 400px; 
+  max-width: 400px;
 }
 
 
 .search-input {
   width: 100%;
-  padding: 10px 40px 10px 15px; 
-  border-radius: 20px; 
+  padding: 10px 40px 10px 15px;
+  border-radius: 20px;
   border: 1px solid #ddd;
-  background-color: #f9f9f9; 
+  background-color: #f9f9f9;
   font-size: 14px;
   outline: none;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .search-icon {
   position: absolute;
-  right: 15px; 
-  top: 50%; 
-  transform: translateY(-50%); 
-  color: #888; 
-  pointer-events: none; 
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  pointer-events: none;
   font-size: 16px;
 }
 
@@ -92,11 +92,40 @@
 }
 
 .nav-list li a.active {
-  color: #d14900; 
+  color: #d14900;
   border-bottom: 2px solid #d14900;
 }
 
 
 .logout-icon {
   cursor: pointer;
+}
+
+/* Organiza a área do usuário para empilhar o login e a gestão */
+.user-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Alinha tudo à direita */
+  gap: 5px;
+}
+
+/* Estilo para o link de gestão abaixo do login */
+.admin-link {
+  font-size: 12px;
+  color: var(--accent-gold);
+  text-decoration: none;
+  font-weight: bold;
+  padding-right: 10px;
+}
+
+.admin-link:hover {
+  text-decoration: underline;
+}
+
+/* Garante que o cabeçalho não quebre com os novos elementos */
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Alinhado ao topo para dar espaço ao link abaixo */
+  padding: 15px 5%;
 }

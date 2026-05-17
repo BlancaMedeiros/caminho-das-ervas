@@ -5,7 +5,7 @@
     <div class="layout-pagamento">
       <form class="checkout-form" [formGroup]="formularioPagamento">
         <h3>Informações de Pagamento</h3>
-        
+
         <div class="metodos-selecao">
           <label>
             <input type="radio" name="metodo" value="pix" checked> PIX (5% de desconto)
@@ -21,14 +21,14 @@
           <input type="text" formControlName="endereco" placeholder="Endereço de Entrega">
         </div>
 
-        <button 
-          type="button" 
-          class="btn-confirmar" 
+        <button
+          type="button"
+          class="btn-confirmar"
           [disabled]="formularioPagamento.invalid"
-          (click)="confirmarPagamento()"> 
+          (click)="confirmarPagamento()">
           Confirmar Pagamento
         </button>
-        
+
         <!-- Usando a sintaxe @if para manter consistência com o restante do arquivo -->
         @if (formularioPagamento.invalid && formularioPagamento.dirty) {
           <p class="aviso-erro">
@@ -41,8 +41,8 @@
         <h3>Resumo do Pedido</h3>
         @for (item of carrinhoService.getItens(); track item.produto.id) {
           <div class="resumo-item">
-            <span>{{ item.quantidade }}x {{ item.produto.nome }}</span>
-            <span>{{ (item.produto.preco * item.quantidade) | currency:'BRL' }}</span>
+            <span>{{ item.quantidade }}x {{ item.produto.name }}</span>
+            <span>{{ (item.produto.price * item.quantidade) | currency:'BRL' }}</span>
           </div>
         }
         <hr>

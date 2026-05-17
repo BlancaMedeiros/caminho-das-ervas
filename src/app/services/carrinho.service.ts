@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { produtoModel } from '../models/produto.model';
 import { carrinhoModel } from '../models/carrinho.model';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -58,7 +60,7 @@ export class CarrinhoService {
 
   getPrecoTotal() {
     return this.itens.reduce((total, atual) => {
-      return total + (atual.produto.preco * atual.quantidade);
+      return total + (atual.produto.price * atual.quantidade);
     }, 0);
   }
 

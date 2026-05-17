@@ -1,22 +1,22 @@
 <div class="overlay">
-
   <div class="modal">
     <button class="close-btn" (click)="fechar()">✕</button>
 
     <h2>Login</h2>
 
-    <form (ngSubmit)="onSubmit()">
-      <input 
-        type="email" 
-        [(ngModel)]="email" 
-        name="email"
-        placeholder="Email"
+    <form (ngSubmit)="onLogin()">
+
+      <input
+        type="text"
+        [(ngModel)]="usuario.username"
+        name="username"
+        placeholder="Usuário ou Email"
         required
       >
 
       <input
         type="password"
-        [(ngModel)]="password"
+        [(ngModel)]="usuario.password"
         name="password"
         placeholder="Senha"
         required
@@ -24,11 +24,13 @@
 
       <button type="submit">Entrar</button>
     </form>
+
     <p style="text-align: center; margin-top: 10px;">
       Não tem conta? <a href="#" (click)="irParaCadastro($event)">Cadastre-se</a>
     </p>
-    <p *ngIf="errorMessage" style="color: red; text-align: center;">
-      {{ errorMessage }}
+
+    <p *ngIf="usuario.username === '' && usuario.password === ''" style="color: #888; font-size: 0.8em; text-align: center;">
+      Entre com as suas credenciais para acessar.
     </p>
 
   </div>

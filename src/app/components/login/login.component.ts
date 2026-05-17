@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login-service';
@@ -12,25 +12,52 @@ import { LoginService } from '../../services/login-service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  // Objeto tipado para evitar erros de compilação
+  public usuario = {
+    username: '',
+    password: ''
+  };
 
-  email = '';
-  password = '';
-  errorMessage = '';
-  constructor(private loginService: LoginService, private router: Router){}
+  constructor(
+    private loginService: LoginService,
+    private router: Router
+  ) {}
 
-  onSubmit() {
-    if (this.email === 'admin@email.com' && this.password === 'batata') {
-      this.loginService.setUsuarioLogado(this.email);
-      this.router.navigate(["/"])
-    } else {
-      this.errorMessage = 'Credenciais inválidas';
+  public onLogin(): void {
+    // Verifica se os campos estão preenchidos antes de chamar a API
+    if (!this.usuario.username || !this.usuario.password) {
+      alert('Por favor, preencha todos os campos.');
+      return;
     }
+
+    this.loginService.logar(this.usuario).subscribe({
+      next: (res) => {
+        console.log('Login realizado com sucesso!', res);
+
+        // Guarda as informações do usuário logado
+        localStorage.setItem('user_info', JSON.stringify(res));
+
+        // Redireciona para a página inicial
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        // Exibe mensagem amigável dependendo do erro da API
+        const mensagem = err.status === 401
+          ? 'Usuário ou senha incorretos.'
+          : 'Erro na conexão com o servidor.';
+
+        alert(mensagem);
+        console.error('Erro no login:', err);
+      }
+    });
   }
-  irParaCadastro(event: Event) {
+
+  public irParaCadastro(event: Event): void {
     event.preventDefault();
-    this.router.navigate(["/cadastro"])
+    this.router.navigate(['/cadastro']);
   }
-  fechar(){
-    this.router.navigate(["/"])
+
+  public fechar(): void {
+    this.router.navigate(['/']);
   }
 }
