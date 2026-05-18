@@ -1,0 +1,21 @@
+<app-cabecalho>
+</app-cabecalho>
+
+<app-carrinho></app-carrinho> 
+<router-outlet />
+
+{{adminService.exibirAdmin()}}
+@if(adminService.exibirAdmin()){
+    <h1>teste</h1>
+    <div class="modal-overlay" (click)="adminService.fechar()">
+        <div class="modal-content" (click)="$event.stopPropagation()">
+            <div class="modal-header">
+                <h2>Painel de Gestão</h2>
+                <button class="btn-fechar" (click)="adminService.fechar()">✕</button>
+            </div>
+            <app-product-list></app-product-list>
+        </div>
+    </div>
+}
+<app-rodape></app-rodape>
+

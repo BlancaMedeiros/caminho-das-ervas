@@ -1,0 +1,46 @@
+<div class="overlay">
+  <div class="modal">
+    <button class="close-btn" (click)="irParaLogin($event)">✕</button>
+
+    <h2>Criar Conta</h2>
+
+    <form (ngSubmit)="registrarUsuario()">
+      <input
+        type="text"
+        [(ngModel)]="usuario.username"
+        name="username"
+        placeholder="Escolha um Usuário"
+        required
+      >
+      <label for="email">E-mail</label>
+      <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+
+      <input
+        type="password"
+        [(ngModel)]="usuario.password"
+        name="password"
+        placeholder="Crie uma Senha"
+        required
+      >
+
+      <input
+        type="password"
+        [(ngModel)]="usuario.confirmarSenha"
+        name="confirmarSenha"
+        placeholder="Confirme a Senha"
+        required
+      >
+
+      <button type="submit" class="btn-cadastrar">Finalizar Cadastro</button>
+
+      <div class="alternativas">
+  <!-- Use o evento (click) em vez de routerLink para manter a sobreposição do modal -->
+        <a href="#" (click)="irParaLogin($event)">Voltar para o Login</a>
+      </div>
+    </form>
+
+    <p style="text-align: center; margin-top: 10px;">
+      Já tem uma conta? <a href="#" (click)="irParaLogin($event)">Faça Login</a>
+    </p>
+  </div>
+</div>
