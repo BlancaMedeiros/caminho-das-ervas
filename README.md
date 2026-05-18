@@ -73,7 +73,7 @@ Diferente de e-commerces tradicionais onde o cadastro é manual via formulário,
 
 ---
 Desenvolvido por 
-**Anderson Marques da Silva**
-**Bianca Medeiros Labiapari**
-**Jucileide Viana**
+**Anderson Marques da Silva** -
+**Bianca Medeiros Labiapari** -
+**Jucileide Viana** -
 **Matheus da Silva Bissolati**
