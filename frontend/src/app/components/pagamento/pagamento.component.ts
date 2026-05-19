@@ -46,7 +46,7 @@ import { carrinhoModel } from '../../models/carrinho.model';
   concluirNoWhatsApp() {
     let listaprodutos = "";
     this.itensPedido.forEach(item=>{
-      listaprodutos+= `${item.quantidade}x ${item.produto.nome}\n`
+      listaprodutos+= `${item.quantidade}x ${item.produto.name}\n`
     })
 
     

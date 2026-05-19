@@ -1,6 +1,7 @@
 import { CategoriaType } from "../types/categoria.type";
 // src/app/models/product.model.ts
-export interface produtoModel { // 👈 Mudamos de 'Product' para 'produtoModel'
+export interface produtoModel {
+  nome: any; // 👈 Mudamos de 'Product' para 'produtoModel'
   id?: number;
   name: string;
   description?: string;

@@ -62,8 +62,8 @@
       <h3>Itens do seu pedido:</h3>
       @for (item of itensPedido; track item.produto.id) {
         <div class="resumo-item-sucesso">
-          <span class="item-nome">{{ item.quantidade }}x {{ item.produto.nome }}</span>
-          <span class="item-preco">{{ (item.produto.preco * item.quantidade) | currency:'BRL' }}</span>
+          <span class="item-nome">{{ item.quantidade }}x {{ item.produto.name }}</span>
+          <span class="item-preco">{{ (item.produto.price * item.quantidade) | currency:'BRL' }}</span>
         </div>
       }
       
